@@ -1,0 +1,270 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url('images/b4.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px; 
+    background-color: #333;
+    color: #fff;
+}
+
+.site-name {
+    margin: 0;
+    font-size: 24px;
+}
+
+.buttons {
+    display: flex;
+    align-items: center;
+}
+
+.buttons button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+.buttons button:last-child {
+    margin-right: 0;
+}
+
+.buttons button:hover {
+    background-color: #0056b3;
+}
+
+.login-container,
+.register-container {
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    max-width: 400px;
+    margin: 0 auto;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+}
+
+.login-container h2,
+.register-container h2 {
+    margin-top: 0;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: calc(100% - 22px); 
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+button.login-button,
+button.register-button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.login-button {
+    background-color: #0079d3;
+    color: #fff;
+}
+
+.register-button {
+    background-color: #ff4500;
+    color: #fff;
+}
+
+.login-link a,
+.register-link a {
+    color: #0079d3;
+    text-decoration: none;
+}
+
+.login-link a:hover,
+.register-link a:hover {
+    text-decoration: underline;
+}
+
+
+.main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px;
+}
+
+.image-card {
+    position: relative;
+    width: 200px;
+    margin: 10px;
+    text-align: center;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #fff;
+    word-wrap: break-word; 
+}
+
+.image-card img {
+    width: 100%;
+    border-radius: 5px 5px 0 0;
+}
+
+.image-caption {
+    width: 100%; 
+    display: block; 
+    margin-top: 5px;
+    font-size: 14px;
+    color: #555;
+    padding: 5px;
+    overflow: hidden;
+    word-wrap: break-word;
+    font-weight: bold;
+}
+
+.image-card .delete-checkbox {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.image-card .image-meta {
+    width: 200px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+    background-color: #f0f0f0;
+    border-radius: 0 0 5px 5px;
+    flex-wrap: wrap;
+}
+
+.image-card .like-button,
+.image-card .comments-count,
+.image-card .views-count,
+.image-card .upload-date {
+    margin: 0 10px;
+    white-space: nowrap;
+}
+
+.like-button {
+    background-color: transparent;
+    border: 1px solid #007bff;
+    color: #007bff;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 5px 10px;
+    margin-top: 5px;
+}
+
+.like-button.active {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.comments-count,
+.views-count,
+.upload-date {
+    white-space: nowrap;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+    padding-top: 60px;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+input[type="file"] {
+    margin-bottom: 10px;
+}
+
+input[type="text"] {
+    width: calc(100% - 20px);
+    padding: 8px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+
+button#uploadSubmit {
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+button#uploadSubmit:hover {
+    background-color: #218838;
+}
+
+.login-footer,
+.register-footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    position: fixed; 
+    bottom: 0;
+    width: 100%;
+    z-index: 1000; 
+}
