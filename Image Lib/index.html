@@ -1,27 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Parallax Website</title>
+    <link rel = "shortcut icon" type = "ImageLib-icon" href="images/ImageLibrary.png">
     <link rel="stylesheet" href="styles.css">
+    <title>Image Library</title>
+    <style>
+        .fade-in {
+            opacity: 0;
+            animation: fadeInAnimation ease 2s forwards;
+        }
+
+        @keyframes fadeInAnimation {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+    </style>
 </head>
+
 <body>
-    <div class="navbar">
-        <div class="logo">Image Lib</div>
-        <div class="categories">
-            <a href="#homepage" class="category-link">Home Page</a>
-            <a href="#gallery" class="category-link">Gallery</a>
-            <a href="#aboutus" class="category-link">About Us</a>
-        </div>
-        <div class="user-options">
-            <a href="#" class="user-link">SignUp</a>
-            <a href="#" class="user-link">Login</a>
-        </div>
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loader"></div>
     </div>
+
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="logo"><a href="#homepage">Image Lib</a></div>
+            <div class="burger" id="burger">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+            <ul class="nav-list" id="navList">
+                <li><a href="#homepage" class="category-link">Home Page</a></li>
+                <li><a href="#gallery" class="category-link">Gallery</a></li>
+                <li><a href="#aboutus" class="category-link">About Us</a></li>
+            </ul>
+        </div>
+    </nav>
+
     <div class="parallax-container">
         <section id="homepage" class="section parallax">
-            <div class="home-content">
+            <div class="home-content fade-in">
                 <h2>Home Page</h2>
                 <p>When you reading this, you know that I always love you</p>
                 <a href="upload.html" class="get-started-button">Get Started</a>
@@ -36,9 +62,12 @@
             <h2>About Us</h2>
         </section>
     </div>
+
     <div class="footer">
         <p>&copy; 2023 Image Lib | Copyright from website jundabest</p>
     </div>
+
     <script src="script.js"></script>
 </body>
+
 </html>

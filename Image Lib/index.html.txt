@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="ImageLib-icon" href="images/ImageLibrary.png">
+    <style>
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            height: 100%;
+            overflow-x: hidden;
+        }
+
+        .navbar {
+            background-color: black;
+            color: #ffffff;
+            padding: 10px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            margin-right: 20px;
+        }
+
+        .logo a {
+            text-decoration: none; /* Remove underline */
+            color: #ffffff; /* Change the color to your desired color */
+        }
+
+        .nav-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        .nav-list li {
+            margin: 0 15px;
+        }
+
+        .nav-list li a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .burger,
+        .menu-icon {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .bar {
+            background-color: #fff;
+            height: 3px;
+            width: 25px;
+            margin: 4px 0;
+            transition: 0.4s;
+        }
+
+        .categories {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+
+        .category-link {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+            margin: 0 10px;
+            position: relative;
+            transition: transform 0.3s;
+        }
+
+        .category-link:hover {
+            text-decoration: underline;
+            color: #ffffff;
+            transform: scale(1.1);
+        }
+
+        .category-link::before {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #0059ff;
+            transform: scaleX(0);
+            transform-origin: bottom right;
+            transition: transform 0.3s;
+        }
+
+        .category-link:hover::before {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+
+        section {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-size: 48px;
+            flex-direction: column;
+            color: #fff;
+            padding: 50px;
+        }
+
+        section h2 {
+            margin-bottom: 10px;
+        }
+
+        #homepage {
+            background-image: url('https://cdnb.artstation.com/p/assets/images/images/037/538/803/large/dan-feijiding-6.jpg?1620656116');
+            background-size: cover;
+            background-attachment: fixed;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            color: #fff;
+            padding: 50px;
+        }
+
+        .home-content h2,
+        .home-content p,
+        .home-content .get-started-button {
+            margin: 10px 0;
+        }
+
+        #gallery {
+            background-image: url('https://cdna.artstation.com/p/assets/images/images/036/249/616/large/jeremy-anninos-1.jpg?1617133289');
+            background-size: cover;
+            background-attachment: fixed;
+        }
+
+        #aboutus {
+            background-image: url('https://cdnb.artstation.com/p/assets/images/images/053/496/535/4k/kudos-productions-gwen-1.jpg?1662366999');
+            background-size: cover;
+            background-attachment: fixed;
+        }
+
+        .get-started-button {
+            display: inline-block;
+            padding: 8px 16px;
+            background-color: #000;
+            color: #fff;
+            text-decoration: none;
+            font-size: 0.56em;
+            margin-top: 0px;
+            border-radius: 25px;
+            transition: background-color 0.3s, transform 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .get-started-button:hover {
+            background-color: #0059ff;
+            transform: scale(1.05);
+        }
+
+        .footer {
+            background-color: #000;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .menu {
+            display: none;
+        }
+
+        .menu.active {
+            display: block;
+        }
+
+        .menu-icon {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        /* Fade-in animation */
+        .fade-in {
+            opacity: 0;
+            animation: fadeInAnimation ease 2s forwards;
+        }
+
+        @keyframes fadeInAnimation {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+    </style>
+    <title>Image Library</title>
+    <style>
+        .fade-in {
+            opacity: 0;
+            animation: fadeInAnimation ease 2s forwards;
+        }
+
+        @keyframes fadeInAnimation {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loader"></div>
+    </div>
+
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="logo"><a href="#homepage">Image Lib</a></div>
+            <div class="burger" id="burger">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+            <ul class="nav-list" id="navList">
+                <li><a href="#homepage" class="category-link">Home Page</a></li>
+                <li><a href="#gallery" class="category-link">Gallery</a></li>
+                <li><a href="#aboutus" class="category-link">About Us</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="parallax-container">
+        <section id="homepage" class="section parallax">
+            <div class="home-content fade-in">
+                <h2>Home Page</h2>
+                <p>When you reading this, you know that I always love you</p>
+                <a href="upload.html" class="get-started-button">Get Started</a>
+            </div>
+        </section>
+
+        <section id="gallery" class="section parallax">
+            <h2>Gallery</h2>
+        </section>
+
+        <section id="aboutus" class="section parallax">
+            <h2>About Us</h2>
+        </section>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2023 Image Lib | Copyright from website jundabest</p>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const sections = document.querySelectorAll('.section');
+            const navbar = document.getElementById('navbar');
+            const burger = document.getElementById('burger');
+            const navList = document.getElementById('navList');
+
+            function handleScroll() {
+                sections.forEach(section => {
+                    const top = section.offsetTop;
+                    const scrollPosition = window.scrollY;
+
+                    if (scrollPosition >= top && scrollPosition <= top + section.offsetHeight) {
+                        section.classList.add('active');
+                    } else {
+                        section.classList.remove('active');
+                    }
+                });
+
+                if (window.scrollY >= document.querySelector('#home').offsetTop) {
+                    navbar.classList.add('sticky');
+                } else {
+                    navbar.classList.remove('sticky');
+                }
+            }
+
+            burger.addEventListener('click', () => {
+                navList.classList.toggle('active');
+            });
+
+            window.addEventListener('scroll', handleScroll);
+        });
+    </script>
+</body>
+
+</html>
